@@ -1,0 +1,92 @@
+@media(max-width: 1250px) {
+  #about {
+    width: 100%;
+  }
+  .contact-form {
+    width: 100%;
+  }
+  #about .contents {
+    display: block;
+  }
+   .contents .profile-photo {
+    width: 100%;
+    text-align: center;
+  }
+  .contents .profile-photo img {
+    width: 300px;
+    height: 300px;
+    border-radius: 70%;
+  }
+  .contents .profile-text {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 50px 0;
+    line-height: 1.7;
+    font-style: italic;
+  }
+}
+@media(max-width: 980px){
+  #top {
+    width: 100%;
+    background-size: auto;
+  }
+  #works .grid img {
+    vertical-align: top;
+    height: 300px;
+    width: 100%;
+  }
+}
+@media(max-width: 900px) {
+  #top h1 {
+    position: absolute;
+    text-align: left;
+    top: 200px;
+    left: 20px;
+    font-size: 40px;
+    font-family: 'IM Fell DW Pica SC', serif;
+    z-index: 3;
+  }
+  .contents {
+    display: block;
+  }
+  .skill-icon {
+    text-align: center;
+  }
+  .skill-title {
+    padding-bottom: 20px;
+  }
+  #service .contents section {
+    width: 80%;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  #contact .contents {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+  #contact .contents section p {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .contact-form {
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  #contact .contact-form input,
+  #contact .contact-form textarea {
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 0 auto 20px auto;
+  }
+  dd,dt {
+    text-align: left;
+  }
+  #twitter {
+    text-align: center;
+  }
+}

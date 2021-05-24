@@ -1,0 +1,154 @@
+@charset "UTF-8"
+body {
+font-family: "Arial", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+font-size: 0.875rem;
+color: #2a2a2a;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  opacity: 0.7;
+}
+header {
+  background-image: url(img/main.jpg);
+  height: 750px;
+  position: relative;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+header img {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+main {
+  padding-top: 85px;
+  text-align: center;
+}
+.wrapper {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding-bottom: 85px;
+}
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.section-text {
+  margin-bottom: 45px;
+}
+#magazine {
+  display: flex;
+}
+.archive,.new {
+  width: 49%;
+  position: relative;
+}
+#magazine img {
+  width: 100%;
+  padding-right: 25px;
+}
+#magazine img:nth-child(2){
+  padding-right: 0;
+}
+#magazine .text {
+  width: 100%;
+  max-width: 290px;
+  position: absolute;
+  color: #fff;
+  font-weight: bold;
+  padding: 15px 0;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 40%;
+  left: 0;
+  right: 0;
+}
+#fashion {
+  height: 525px;
+  background-image: url(img/fashion.jpg);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-bottom: 85px;
+}
+#fashion h2 {
+  padding-top: 65px;
+}
+.btn {
+  color: #2a2a2a;
+  border: solid 1px #2a2a2a;
+  display: inline-block;
+  font-size: 0.750rem;
+  padding: 14px 36px;
+}
+.btn a {
+  display: block;
+}
+.anique {
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 65px;
+  height: 1250px;
+}
+.catalog-anique {
+  display: flex;
+  width: 100%;
+}
+.box {
+  width: 49%;
+  height: 505px;
+  padding-right: 50px;
+}
+.box:nth-child(2),:nth-child(4) {
+  padding-right: 0;
+}
+.box img {
+  width: 100%;
+  height: 100%;
+}
+
+.box li  {
+  text-align: left;
+  padding-bottom: 40px;
+  font-size: 14px;
+}
+footer {
+  height: 440px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.footer-top {
+  height:370px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  padding: 100px 0;
+}
+.footer-bottom {
+  height: 70px;
+  background-color: #f5f5f5;
+  text-align: center;
+  padding: 34px;
+  font-size: 10px;
+}
+.footer-top img {
+  padding-top: 50px;
+}
+.footer-top div {
+  width: 33%;
+  font-size: 12px;
+}
+.title {
+  padding-bottom: 25px;
+  font-size: 16px;
+}
+.footer-top div li {
+  font-size: 5px;
+  padding-bottom: 2px;
+}

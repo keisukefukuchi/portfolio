@@ -1,0 +1,47 @@
+@media(max-width: 1150px) {
+  .footer-top {
+    width: 100%;
+  }
+  .footer-top div {
+    width: 30%;
+    margin: 0 auto;
+  }
+}
+@media(max-width: 880px) {
+  #magazine {
+    display: block;
+  }
+  .archive,.new {
+    width: 100%;
+  }
+  #magazine img {
+    width: 100%;
+    padding-right: 0;
+    padding-bottom: 25px;
+  }
+  .catalog-anique {
+    display: block;
+  }
+  .anique {
+    height: auto;
+  }
+  .box {
+    width: 100%;
+    margin: 0 auto;
+    height: 505px;
+    padding-right: 0;
+    padding-bottom: 25px;
+  }
+  .footer-top {
+    display: block;
+    padding: 0 10px 10px 10px;
+  }
+  .footer-top img {
+    padding-top: 30px;
+  }
+  .footer-top div {
+    width: 100%;
+    text-align: left;
+    padding-bottom: 20px;
+  }
+}

@@ -259,7 +259,18 @@ footer h3 {
   font-size: 18px;
   padding-bottom: 40px;
 }
-
+.content {
+  padding-top: 60px;
+  display: flex;
+  padding-bottom: 60px;
+}
+.content section {
+  width: 350px;
+  margin-right: 60px;
+}
+.content section:nth-child(3) {
+  margin-right: 0;
+}
 .item p {
   line-height: 1.5;
   padding-bottom: 30px;

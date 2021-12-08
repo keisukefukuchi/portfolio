@@ -50,43 +50,10 @@
   .contents {
     display: block;
   }
-  .skill-icon {
-    text-align: center;
-  }
-  .skill-title {
-    padding-bottom: 20px;
-  }
   #service .contents section {
     width: 80%;
     padding: 20px;
     margin: 0 auto;
-    text-align: center;
-  }
-  #contact .contents {
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-  }
-  #contact .contents section p {
-    text-align: center;
-    padding-bottom: 20px;
-  }
-  .contact-form {
-    width: 70%;
-    text-align: center;
-    margin: 0 auto;
-  }
-  #contact .contact-form input,
-  #contact .contact-form textarea {
-    width: 100%;
-    background-color: #fff;
-    padding: 10px;
-    margin-bottom: 0 auto 20px auto;
-  }
-  dd,dt {
-    text-align: left;
-  }
-  #twitter {
     text-align: center;
   }
 }

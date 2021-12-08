@@ -240,13 +240,18 @@ li {
 }
 
 #skill {
-  max-width: 1240px;
-  padding: 100px 16px 50px 16px;
-  margin: -50px auto 10px auto;
+  max-width: 960px;
+  margin: 0 auto;
 }
 .skill {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.skill-icon {
+  padding: 0 20px;
 }
 .fab {
   padding-bottom: 20px;
@@ -276,44 +281,4 @@ li {
 #service .contents section p {
   padding-top: 20px;
   text-align: left;
-}
-
-#contact {
-  background-color: #ddd;
-}
-#contact .contents {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  margin: 0 auto;
-}
-.contact-form {
-  width: 400px;
-}
-#contact .contact-form input,
-#contact .contact-form textarea {
-  width: 100%;
-  background-color: #fff;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-input[type="text"],
-input[type="email"] {
-  max-width: 250px;
-}
-
-#contact .contact-form .button input {
-  width: 200px;
-  color: #fff;
-  background-color: #121212;
-  border: solid 1px #fff;
-  border-radius: 20px;
-  padding: 12px 0;
-}
-#contact .contact-form .button input:hover {
-  color: #202020;
-  background-color: #fff;
-}
-#twitter {
-  padding-bottom: 50px;
 }

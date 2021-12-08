@@ -11,12 +11,6 @@
   aside {
     width: 30%;
   }
-  .content {
-    width: 100%;
-  }
-  .content section {
-    width: 32%;
-  }
 }
 @media(max-width: 760px) {
   #pickup {
@@ -39,15 +33,4 @@
   footer {
     height: auto;
   }
-  .content {
-    display: block;
-  }
-  .content section {
-    width: 100%;
-    margin-right: 0;
-    padding-bottom: 50px;
-  }
-}
-@media(max-width: 520px) {
-  header
 }

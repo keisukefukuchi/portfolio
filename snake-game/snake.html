@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Snake</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <style>
+      /* ステージ */
+      #stage {
+        /* グリッドレイアウト */
+        display: grid;
+        grid-template-columns: repeat(10, 30px); /* 10列 幅30px */
+        grid-template-rows: repeat(10, 30px); /* 10行 高さ30px */
+        grid-gap: 2px; /* マス同士の隙間2px */
+      }
+
+      /* 全てのマス */
+      .cell {
+        background: whitesmoke;
+      }
+
+      /* ヘビの体のマス */
+      .cell.body {
+        background: darkgray;
+      }
+
+      /* フルーツの色 */
+      .cell.fruit {
+        background: orangered;
+      }
+
+      /* ヘビの頭のマス */
+      .cell.head {
+        background: dimgray;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>SCORE: {{ score }}</p>
+      <div id="stage">
+        <div
+          class="cell"
+          v-for="i in stage_cells_count"
+          :class="{
+							 head: snake_head_index === i - 1,
+							 body: snake.body_indexes.includes(i - 1),
+							 fruit: fruit_index === i - 1,
+							 }"
+        ></div>
+      </div>
+
+      <p v-if="is_gameover">
+        GAME OVER<br />
+        <button onclick="location.reload()">RETRY</button>
+      </p>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+
+        data: {
+          stage_side_length: 10, // 10 x 10 マス
+          fruit_index: 0, // フルーツの位置インデックス
+
+          // ヘビに関するデータ
+          snake: {
+            // 頭の座標（初期値）
+            head_pos: {
+              x: 1,
+              y: 3,
+            },
+
+            speed: 300, // 1マス進むのにかかる時間[ms]
+            direction: "↑", // 進行方向
+            body_length: 1, // 体の長さ（頭を除く）
+            body_indexes: [], // 体の位置インデックスたち
+          },
+        },
+
+        created() {
+          // フルーツの位置をランダムに移動
+          this.randomize_fruit_index();
+
+          // キーボード入力のイベントをmethodsのon_keydownに投げる
+          document.addEventListener("keydown", this.on_keydown);
+
+          // 時間を動かし始める
+          this.time_goes();
+        },
+
+        watch: {
+          // ヘビの頭の位置を監視
+          snake_head_index(newValue) {
+            // ヘビの頭の位置がフルーツの位置と同じになったとき
+            if (newValue === this.fruit_index) {
+              this.snake.body_length++; // 体長+1
+
+              // フルーツの位置をランダムに移動
+              this.randomize_fruit_index();
+            }
+          },
+        },
+
+        computed: {
+          // ステージのマス目の数（=100）
+          stage_cells_count() {
+            return this.stage_side_length * this.stage_side_length;
+          },
+
+          // ヘビの頭の座標をインデックスに変換
+          snake_head_index() {
+            if (this.is_frameout) return null;
+            return (
+              this.snake.head_pos.y * this.stage_side_length +
+              this.snake.head_pos.x
+            );
+          },
+
+          // スコアを計算する
+          score() {
+            return this.snake.body_length - 1;
+          },
+
+          // 画面外に飛び出しているか否か
+          is_frameout() {
+            const { x, y } = this.snake.head_pos;
+            return (
+              x < 0 ||
+              this.stage_side_length <= x ||
+              y < 0 ||
+              this.stage_side_length <= y
+            );
+          },
+
+          // 自己衝突しているか否か
+          is_collided() {
+            return this.snake.body_indexes.includes(this.snake_head_index);
+          },
+
+          // ゲームオーバーしているか否か
+          is_gameover() {
+            return this.is_collided || this.is_frameout;
+          },
+        },
+
+        methods: {
+          // 時間を進める
+          time_goes() {
+            if (this.is_gameover) return; // ゲームオーバーしていたらこれ以上ヘビを進めない
+
+            this.forward_snake();
+
+            // speedミリ秒後に自分自身を呼び出す
+            setTimeout(this.time_goes, this.snake.speed);
+          },
+
+          // ヘビを進める
+          forward_snake() {
+            // 体の尻尾を消す
+            if (this.snake.body_indexes.length >= this.snake.body_length) {
+              this.snake.body_indexes.shift();
+            }
+
+            // 頭の位置に体を追加
+            if (this.snake.body_indexes.length < this.snake.body_length) {
+              this.snake.body_indexes.push(this.snake_head_index);
+            }
+
+            // 頭を1マス移動
+            switch (this.snake.direction) {
+              case "←":
+                this.snake.head_pos.x--;
+                break;
+              case "↑":
+                this.snake.head_pos.y--;
+                break;
+              case "→":
+                this.snake.head_pos.x++;
+                break;
+              case "↓":
+                this.snake.head_pos.y++;
+                break;
+            }
+          },
+
+          // キー入力を受け取る
+          on_keydown(event) {
+            switch (event.key) {
+              case "ArrowUp":
+                this.snake.direction = "↑";
+                break;
+              case "ArrowRight":
+                this.snake.direction = "→";
+                break;
+              case "ArrowDown":
+                this.snake.direction = "↓";
+                break;
+              case "ArrowLeft":
+                this.snake.direction = "←";
+                break;
+            }
+          },
+
+          // フルーツの位置をランダムに移動
+          randomize_fruit_index() {
+            this.fruit_index = Math.floor(
+              Math.random() * this.stage_cells_count
+            ); // 0 〜 99 の乱数
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

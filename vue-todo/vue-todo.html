@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+
+<body>
+  <div id="app">
+    <h2>TODOアプリ</h2>
+    <todo :todos="todos"/>
+  </div>
+  <script>
+    const sampleData = [
+      {
+        id: 1,
+        title: '予習',
+        time: 30,
+      },
+      {
+        id: 2,
+        title: '学習',
+        time: 40,
+      },
+      {
+        id: 3,
+        title: '復習',
+        time: 50,
+      },
+    ];
+      
+    Vue.component('add-todo-list-item', {
+      data(){
+        return {
+          todoContent: 'task',
+          estimatedTime: 60,
+        }
+      },
+      template: `
+      <div>
+        <div>
+          <label>タスク名：<input type="text" v-model="todoContent"/></label>
+          <label>推定時間（分）：<input type="text" v-model="estimatedTime"/></label>
+        </div>
+        <button v-on:click="addTodo()">追加</button>
+      </div>
+      `,
+      methods:{
+        addTodo(){
+          const todoLength =  vm.todos.length + 1;
+          const pushItem = {
+            id: todoLength,
+            title: this.todoContent,
+            time: this.estimatedTime,
+          };
+
+
+          vm.todos.push(pushItem);
+
+
+          this.todoContent = '';
+          this.estimatedTime = 60;
+        }
+      }
+    });
+
+
+    Vue.component('todo-list-item', {
+      props: {
+        todoItem: {
+          type: Object,
+          required: true,
+          default: {},
+        }
+      },
+      template: `
+        <tr>
+          <td>{{todoItem.title}}</td>
+          <td>{{todoItem.time}}分</td>
+        </tr>
+      `,
+    });
+
+
+    Vue.component('todo', {
+      props: {
+        todos:{
+          type: Array,
+          required: true,
+          default: [],
+        }
+      },
+      template: `
+      <div>
+        <add-todo-list-item></add-todo-list-item>
+        <table>
+          <tr><th>タスク</th><th>推定時間（分）</th></tr>
+          <todo-list-item v-for="todo in todos" :todo-item="todo"/>
+        </table>
+      </div>
+      `,
+    });
+
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        todos: sampleData
+      },
+    });
+  </script>
+  <style>
+    th, td{
+      text-align-last: left;
+      width: 200px;
+    }
+  </style>
+
+
+</body>
+</html>
